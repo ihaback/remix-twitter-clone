@@ -1,7 +1,36 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
+import { getCSP, SELF, UNSAFE_INLINE, DATA, UNSAFE_EVAL } from "csp-header";
 
 import type { User } from "~/models/user.server";
+
+const sitePreset = {
+  "default-src": [SELF],
+  "script-src":
+    process.env.NODE_ENV === "development"
+      ? [UNSAFE_EVAL, UNSAFE_INLINE, SELF]
+      : [SELF, UNSAFE_INLINE],
+  "connect-src": [SELF, process.env.NODE_ENV === "development" ? "ws:" : null!],
+  "style-src": [UNSAFE_INLINE, SELF],
+  "font-src": [SELF],
+  "object-src": [SELF],
+  "img-src": [
+    "avatars.githubusercontent.com",
+    "cloudflare-ipfs.com",
+    "user-images.githubusercontent.com",
+    DATA,
+    SELF,
+  ],
+  "frame-ancestors": [SELF],
+  "child-src": [SELF],
+  "frame-src": [SELF],
+  "base-uri": [SELF],
+  "form-action": [SELF],
+};
+
+export const csp = getCSP({
+  presets: [sitePreset],
+});
 
 const DEFAULT_REDIRECT = "/";
 

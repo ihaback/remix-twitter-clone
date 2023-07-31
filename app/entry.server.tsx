@@ -11,6 +11,7 @@ import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
+import { csp } from "./utils";
 
 const ABORT_DELAY = 5_000;
 
@@ -95,6 +96,7 @@ function handleBrowserRequest(
           const body = new PassThrough();
 
           responseHeaders.set("Content-Type", "text/html");
+          responseHeaders.set("Content-Security-Policy", csp);
 
           resolve(
             new Response(body, {
