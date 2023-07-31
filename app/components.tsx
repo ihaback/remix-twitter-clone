@@ -143,9 +143,9 @@ export function TweetList({
                   </div>
                   <div className="sm:pl-3">
                     <h4 className="text-lg font-bold hover:text-blue-500 hover:underline">
-                      <Link to={`/profile/${tweet.userId}`}>
+                      <NavLink to={`/profile/${tweet.userId}`}>
                         {tweet?.user?.email}
-                      </Link>
+                      </NavLink>
                     </h4>
                     <p className="mt-1">{tweet.body}</p>
                   </div>
