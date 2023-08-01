@@ -75,25 +75,23 @@ export default function TweetsPage() {
               }}
               className="feed-padding"
             >
-              <div>
-                <label className="flex w-full flex-col gap-1">
-                  <textarea
-                    ref={bodyRef}
-                    name="body"
-                    rows={6}
-                    className="w-full flex-1 rounded-md border-2 border-gray-200 px-3 py-2 text-lg leading-6 focus:border-blue-500"
-                    aria-invalid={actionData?.errors?.body ? true : undefined}
-                    aria-errormessage={
-                      actionData?.errors?.body ? "body-error" : undefined
-                    }
-                  />
-                </label>
-                {actionData?.errors?.body ? (
-                  <div className="pt-1 text-red-700" id="body-error">
-                    {actionData.errors.body}
-                  </div>
-                ) : null}
-              </div>
+              <label className="flex w-full flex-col gap-1">
+                <textarea
+                  ref={bodyRef}
+                  name="body"
+                  rows={6}
+                  className="w-full flex-1 rounded-md border-2 border-gray-200 px-3 py-2 text-lg leading-6 focus:border-blue-500"
+                  aria-invalid={actionData?.errors?.body ? true : undefined}
+                  aria-errormessage={
+                    actionData?.errors?.body ? "body-error" : undefined
+                  }
+                />
+              </label>
+              {actionData?.errors?.body ? (
+                <div className="pt-1 text-red-700" id="body-error">
+                  {actionData.errors.body}
+                </div>
+              ) : null}
 
               <div className="text-right">
                 <button

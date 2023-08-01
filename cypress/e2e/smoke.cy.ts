@@ -28,7 +28,6 @@ describe("smoke tests", () => {
 
   it("should allow you to make a Tweet", () => {
     const testTweet = {
-      title: faker.lorem.words(1),
       body: faker.lorem.sentences(1),
     };
     cy.login();
@@ -38,12 +37,9 @@ describe("smoke tests", () => {
     cy.findByRole("link", { name: /tweets/i }).click();
     cy.findByText("No tweets yet");
 
-    cy.findByRole("textbox", { name: /title/i }).type(testTweet.title);
-    cy.findByRole("textbox", { name: /body/i }).type(testTweet.body);
-    cy.findByRole("button", { name: /save/i }).click();
+    cy.findByRole("textbox").type(testTweet.body);
+    cy.findByRole("button", { name: /post/i }).click();
 
-    cy.findByRole("button", { name: /delete/i }).click();
-
-    cy.findByText("No Tweets yet");
+    cy.findByText(testTweet.body);
   });
 });
