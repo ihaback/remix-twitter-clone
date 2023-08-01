@@ -139,17 +139,18 @@ export function TweetList({
                         {tweet?.user?.email}
                       </NavLink>
                     </h4>
-                    <NavLink
-                      className="pt-1"
-                      preventScrollReset
-                      to={
-                        isProfile
-                          ? `/profile/${tweet.userId}/tweets/${tweet.id}`
-                          : tweet.id
-                      }
-                    >
-                      <p>{tweet.body}</p>
-                    </NavLink>
+                    <p className="pt-1">
+                      <NavLink
+                        preventScrollReset
+                        to={
+                          isProfile
+                            ? `/profile/${tweet.userId}/tweets/${tweet.id}`
+                            : tweet.id
+                        }
+                      >
+                        {tweet.body}
+                      </NavLink>
+                    </p>
                   </div>
                 </div>
               </div>

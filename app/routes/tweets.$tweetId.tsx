@@ -50,7 +50,7 @@ export default function TweetDetailsPage() {
   return (
     <div>
       <h3 className="text-2xl font-bold">{tweet.user.email}</h3>
-      <p className="py-6">{tweet.body}</p>
+      <p className="pb-3 pt-1">{tweet.body}</p>
       {user?.id === tweet.userId && (
         <Form method="post">
           <button
