@@ -67,13 +67,8 @@ export default function TweetsPage() {
             <Form
               ref={formRef}
               method="post"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
-                width: "100%",
-              }}
-              className="feed-padding"
+              className="feed-padding flex w-full flex-col gap-8
+              "
             >
               <label className="flex w-full flex-col gap-1">
                 <textarea
