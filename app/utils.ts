@@ -1,6 +1,6 @@
 import { useMatches } from "@remix-run/react";
 import { useMemo } from "react";
-import { getCSP, SELF, UNSAFE_INLINE, DATA, UNSAFE_EVAL } from "csp-header";
+import { getCSP, SELF, UNSAFE_INLINE, UNSAFE_EVAL } from "csp-header";
 
 import type { User } from "~/models/user.server";
 
@@ -18,7 +18,6 @@ const sitePreset = {
     "avatars.githubusercontent.com",
     "cloudflare-ipfs.com",
     "user-images.githubusercontent.com",
-    DATA,
     SELF,
   ],
   "frame-ancestors": [SELF],
