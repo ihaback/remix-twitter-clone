@@ -120,37 +120,39 @@ export function TweetList({
         <ul className="list-none pt-6">
           {tweetListItems?.map((tweet) => (
             <li key={tweet.id} className="border-t border-t-gray-200">
-              <NavLink
-                className={({ isActive }) =>
-                  `block py-4 text-xl ${
-                    isActive ? " bg-gray-50" : "hover:bg-gray-50"
-                  }`
-                }
-                preventScrollReset
-                to={
-                  isProfile
-                    ? `/profile/${tweet.userId}/tweets/${tweet.id}`
-                    : tweet.id
-                }
-              >
+              <div className="block py-4 text-xl">
                 <div className="feed-padding sm:flex">
-                  <div className="mb-4 flex-shrink-0 sm:mb-0">
+                  <NavLink
+                    className="mb-4 flex-shrink-0 sm:mb-0"
+                    preventScrollReset
+                    to={`/profile/${tweet.userId}`}
+                  >
                     <img
                       className="h-16 w-16 cursor-pointer rounded-full border-4 border-blue-400"
                       src={tweet?.user?.imageUrl}
                       alt=""
                     />
-                  </div>
+                  </NavLink>
                   <div className="sm:pl-3">
                     <h4 className="text-lg font-bold hover:text-blue-500 hover:underline">
                       <NavLink to={`/profile/${tweet.userId}`}>
                         {tweet?.user?.email}
                       </NavLink>
                     </h4>
-                    <p className="mt-1">{tweet.body}</p>
+                    <NavLink
+                      className="pt-1"
+                      preventScrollReset
+                      to={
+                        isProfile
+                          ? `/profile/${tweet.userId}/tweets/${tweet.id}`
+                          : tweet.id
+                      }
+                    >
+                      <p>{tweet.body}</p>
+                    </NavLink>
                   </div>
                 </div>
-              </NavLink>
+              </div>
             </li>
           ))}
         </ul>
