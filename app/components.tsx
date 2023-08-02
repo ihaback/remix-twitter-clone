@@ -113,45 +113,41 @@ export function TweetList({
   return (
     <>
       {tweetListItems.length === 0 ? (
-        <p className="feed-padding border-t border-t-gray-200 pt-4">
-          No tweets yet
-        </p>
+        <p className="border-t border-t-gray-200 px-4 pt-4">No tweets yet</p>
       ) : (
         <ul className="list-none pt-6">
           {tweetListItems?.map((tweet) => (
-            <li key={tweet.id} className="border-t border-t-gray-200">
-              <div className="block py-4 text-xl">
-                <div className="feed-padding sm:flex">
+            <li key={tweet.id} className="border-t border-t-gray-200 pl-4">
+              <div className="block pt-4 sm:flex">
+                <NavLink
+                  className="mb-4 flex-shrink-0 sm:mb-0"
+                  preventScrollReset
+                  to={`/profile/${tweet.userId}`}
+                >
+                  <img
+                    className="h-10 w-10 cursor-pointer rounded-full border-4 border-blue-400"
+                    src={tweet?.user?.imageUrl}
+                    alt=""
+                  />
+                </NavLink>
+                <div className="block pt-2 sm:pl-4 sm:pt-0">
                   <NavLink
-                    className="mb-4 flex-shrink-0 sm:mb-0"
-                    preventScrollReset
                     to={`/profile/${tweet.userId}`}
+                    className="block text-base font-bold leading-none hover:text-blue-500 hover:underline"
                   >
-                    <img
-                      className="h-16 w-16 cursor-pointer rounded-full border-4 border-blue-400"
-                      src={tweet?.user?.imageUrl}
-                      alt=""
-                    />
+                    {tweet?.user?.email}
                   </NavLink>
-                  <div className="sm:pl-3">
-                    <h4 className="text-lg font-bold hover:text-blue-500 hover:underline">
-                      <NavLink to={`/profile/${tweet.userId}`}>
-                        {tweet?.user?.email}
-                      </NavLink>
-                    </h4>
-                    <p className="pt-1">
-                      <NavLink
-                        preventScrollReset
-                        to={
-                          isProfile
-                            ? `/profile/${tweet.userId}/tweets/${tweet.id}`
-                            : tweet.id
-                        }
-                      >
-                        {tweet.body}
-                      </NavLink>
-                    </p>
-                  </div>
+                  <NavLink
+                    preventScrollReset
+                    className="block pb-5 pr-4 pt-1 text-xl"
+                    to={
+                      isProfile
+                        ? `/profile/${tweet.userId}/tweets/${tweet.id}`
+                        : tweet.id
+                    }
+                  >
+                    {tweet.body}
+                  </NavLink>
                 </div>
               </div>
             </li>
@@ -169,33 +165,24 @@ export function UserList({
   return (
     <ul className="-mt-6 list-none">
       {userListItems?.map((user) => (
-        <li key={user.id} className="border-t border-t-gray-200">
-          <NavLink
-            className={({ isActive }) =>
-              `block py-4 text-xl ${
-                isActive ? " bg-gray-50" : "hover:bg-gray-50"
-              }`
-            }
-            to={`/profile/${user.id}`}
-          >
-            <div className="feed-padding sm:flex">
-              <div className="mb-4 flex-shrink-0 sm:mb-0">
-                <img
-                  className="h-16 w-16 cursor-pointer rounded-full border-4 border-blue-400"
-                  src={user?.imageUrl}
-                  alt=""
-                />
+        <li key={user.id} className="border-t border-t-gray-200 pl-4">
+          <NavLink className="block pt-4 sm:flex" to={`/profile/${user.id}`}>
+            <div className="mb-4 flex-shrink-0 sm:mb-0">
+              <img
+                className="h-10 w-10 cursor-pointer rounded-full border-4 border-blue-400"
+                src={user?.imageUrl}
+                alt=""
+              />
+            </div>
+            <div className="block pt-2 sm:pl-4 sm:pt-0">
+              <div className="block text-base font-bold leading-none hover:text-blue-500 hover:underline">
+                {user?.email}
               </div>
-              <div className="sm:pl-3">
-                <h4 className="text-lg font-bold hover:text-blue-500 hover:underline">
-                  <span>{user?.email}</span>
-                </h4>
-                <p className="mt-1">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+              <div className="block pb-5 pr-4 pt-1 text-xl">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
               </div>
             </div>
           </NavLink>
