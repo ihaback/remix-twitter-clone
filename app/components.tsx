@@ -44,8 +44,8 @@ export function AppShell({
         <div className="py-6 xl:flex-1">{main}</div>
       </div>
 
-      <div className="relative shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-4/12 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
-        <div className="sticky top-6">{outlet}</div>
+      <div className="relative shrink-0 border-t border-gray-200 px-4 py-2 sm:px-6 lg:w-4/12 lg:border-l lg:border-t-0 lg:pr-8 xl:py-6 xl:pr-6">
+        <div className="sticky top-3">{outlet}</div>
       </div>
     </div>
   );
